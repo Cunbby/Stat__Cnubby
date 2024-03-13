@@ -1,0 +1,41 @@
+FC = "รีเซ็ท";
+
+Title = "STAT";
+
+Message = "จำนวนงานทั้งหมด - {global_all}\nจำนวนงานที่ติด - {global_get}\nจำนวนงานที่หลุด - {global_miss}\n\nอัตราการรับงาน {global_getp}%\nเปอร์เซ็นการรับงาน {global_rate} แรงค์";
+
+global_rate = ((global_get*100)/global_miss)+0.00;
+
+global_all = global_miss + global_get;
+
+if(global_all == 0){global_getp = 0}
+
+else if(global_all != 0){
+
+global_getp = (global_get*100)/global_all;};
+
+if(global_rate >= 80){IC = "S+";TC ="ลุยต่อ"}
+
+else if(global_rate <80 and global_rate >= 60)
+
+{IC = "A";TC ="ลุยต่อ"}
+
+else if(global_rate <60 and global_rate >= 40)
+
+{IC = "B";TC ="ลุยต่อ"}
+
+else if(global_rate <40 and global_rate >= 20)
+
+{IC = "C";TC ="ลุยต่อ"}
+
+else if(global_rate <20 and global_rate >= 0)
+  
+{IC = "D";TC ="ลุยต่อ"};
+
+if(global_all == 0){IC = "E" ; TC="ลุยต่อ"}
+
+else if(global_all != 0 and global_get == 0){IC = "F-" ;TC = "ลุยต่อ"};
+
+if(global_getp > 100){global_getp = 100};
+
+  
